@@ -294,6 +294,7 @@ async fn connect_to_compute_once(
         .password(&conn_info.password)
         .dbname(&conn_info.dbname)
         .max_backend_message_size(MAX_RESPONSE_SIZE)
+        .connect_timeout(time::Duration::from_secs(2))
         .connect(tokio_postgres::NoTls)
         .await?;
 
